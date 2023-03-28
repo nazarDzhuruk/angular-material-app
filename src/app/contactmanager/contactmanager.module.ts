@@ -9,11 +9,14 @@ import { MaterialModule } from '../shared/material.module';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { RouterModule, Routes } from '@angular/router';
+import { UserService } from './services/user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
     path: '', component: ContacmanagerAppComponent,
     children: [
+      { path: ':id', component: MainContentComponent },
       { path: '', component: MainContentComponent }
     ]
   },
@@ -29,10 +32,14 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
     RouterModule.forChild(routes)
+  ],
+  providers: [
+    UserService
   ]
 })
 export class ContactmanagerModule { }
