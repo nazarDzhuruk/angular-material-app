@@ -12,15 +12,15 @@ import { Note } from '../../models/note';
 export class NotesComponent implements OnInit, AfterViewInit {
 
   @Input() 
-  public notes: Note[] | any;
+  public notes: Note[];
 
   @ViewChild(MatPaginator)
-  protected paginator: MatPaginator | any;
+  protected paginator: MatPaginator;
 
   @ViewChild(MatSort)
-  protected sort: MatSort | any;
+  protected sort: MatSort;
 
-  protected dataSource: MatTableDataSource<any[]> | any;
+  protected dataSource: MatTableDataSource<Note>;
   protected displayedColumns: string[] = ['id', 'title', 'date'];
 
   constructor() { }
@@ -35,7 +35,7 @@ export class NotesComponent implements OnInit, AfterViewInit {
     this.dataSource = new MatTableDataSource<Note>(this.notes);
   }
 
-  applyFilter(event: Event){
+  applyFilter(event: Event): void{
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }

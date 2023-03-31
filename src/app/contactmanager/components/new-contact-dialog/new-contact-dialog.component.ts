@@ -10,9 +10,9 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./new-contact-dialog.component.scss']
 })
 export class NewContactDialogComponent implements OnInit {
-  avatars = ["svg-1", "svg-2", "svg-3", "svg-4", "svg-12"];
+  avatars: string[] = ["svg-1", "svg-2", "svg-3", "svg-4", "svg-12"];
   user: User | any;
-  name = new FormControl('', [Validators.required]);
+  name: FormControl = new FormControl('', [Validators.required]);
 
   constructor(private dialogRef: MatDialogRef<NewContactDialogComponent>, private service: UserService) { }
 
